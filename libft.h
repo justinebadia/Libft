@@ -23,7 +23,7 @@
 void    ft_putstr(char *str);
 void ft_putchar(char c);
 int ft_atoi(const char *str);
-int ft_putnbr(int n);
+void ft_putnbr(int n);
 
 // string manipulation
 size_t  ft_strlen (const char *s);
