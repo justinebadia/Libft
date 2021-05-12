@@ -6,11 +6,12 @@
 /*   By: jbadia <jbadia@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 16:17:36 by jbadia            #+#    #+#             */
-/*   Updated: 2021/05/10 14:15:52 by jbadia           ###   ########.fr       */
+/*   Updated: 2021/05/12 15:21:36 by jbadia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "stdio.h"
 
 static int	itoa_length(int n)
 {
@@ -35,24 +36,24 @@ char	*ft_itoa(int n)
 	int		len;
 
 	len = itoa_length(n);
-	str = (char *)malloc(sizeof (char) * len + 1);
+	str = (char *)malloc(sizeof (char) * itoa_length(n) + 1);
 	if (str == NULL)
 		return (NULL);
 	if (n == 0)
 		str[0] = '0';
 	if (n < 0)
 	{
-		str[0] = '-';
+		*(str + 0) = '-';
 		if (n == -2147483648)
 		{
-			str[len-- - 1] = '8';
+			str[len-- -1] = '8';
 			n = n / 10;
-		}
+		}	
 		n *= -1;
 	}
 	while (n != 0 && len >= 0)
 	{
-		str[len-- -1] = n % 10 + '0';
+		str[--len] = n % 10 + '0';
 		n = n / 10;
 	}
 	return (str);

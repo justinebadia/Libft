@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbadia <jbadia@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/11 17:23:07 by jbadia            #+#    #+#             */
-/*   Updated: 2021/05/12 09:57:24 by jbadia           ###   ########.fr       */
+/*   Created: 2021/05/09 14:58:58 by jbadia            #+#    #+#             */
+/*   Updated: 2021/05/10 14:55:30 by jbadia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void(*f)(void *))
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (lst == 0 || f == 0)
-		return ;
-	while (lst != 0)
+	while (*s1 == *s2)
 	{
-		(*f)(lst->content);
-		lst = lst->next;
+		if (*s1 == '\0' && *s2 == '\0')
+		{
+			return (0);
+		}
+		s1++;
+		s2++;
 	}
+	return (*s1 - *s2);
 }

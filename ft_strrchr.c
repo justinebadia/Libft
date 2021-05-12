@@ -6,7 +6,7 @@
 /*   By: jbadia <jbadia@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 15:11:57 by jbadia            #+#    #+#             */
-/*   Updated: 2021/05/10 15:22:29 by jbadia           ###   ########.fr       */
+/*   Updated: 2021/05/12 12:19:08 by jbadia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *str, int c)
 	i = ft_strlen(str);
 	if (c == '\0')
 		return ((char *)&str[i]);
-	while (i != 0)
+	while (i >= 0)
 	{
 		if (str[i] == c)
 			return ((char *)&str[i]);

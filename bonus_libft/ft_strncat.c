@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbadia <jbadia@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/11 17:23:07 by jbadia            #+#    #+#             */
-/*   Updated: 2021/05/12 09:57:24 by jbadia           ###   ########.fr       */
+/*   Created: 2021/05/09 14:55:25 by jbadia            #+#    #+#             */
+/*   Updated: 2021/05/10 15:17:04 by jbadia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void(*f)(void *))
+char	*ft_strncat(char *dest, const char *src, size_t n)
 {
-	if (lst == 0 || f == 0)
-		return ;
-	while (lst != 0)
+	unsigned int	i;
+	unsigned int	size;
+
+	i = 0;
+	size = 0;
+	while (dest[i] != '\0')
 	{
-		(*f)(lst->content);
-		lst = lst->next;
+		i++;
 	}
+	while (*src != '\0' && (size < n))
+	{
+		dest[i] = *src;
+		src++;
+		i++;
+		size++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
