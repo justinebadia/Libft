@@ -6,12 +6,11 @@
 /*   By: jbadia <jbadia@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 16:17:36 by jbadia            #+#    #+#             */
-/*   Updated: 2021/05/12 15:21:36 by jbadia           ###   ########.fr       */
+/*   Updated: 2021/05/13 10:49:25 by jbadia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdio.h"
 
 static int	itoa_length(int n)
 {

@@ -16,10 +16,15 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*memory;
 
+	if (count == 0 || size == 0)
+	{
+		count = 1;
+		size = 1;
+	}
 	memory = NULL;
 	memory = (void *)malloc(count * size);
 	if (memory == NULL)
 		return (NULL);
-	ft_bzero (memory, count);
+	ft_bzero (memory, count * size);
 	return (memory);
 }
