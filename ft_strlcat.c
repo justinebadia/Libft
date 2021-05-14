@@ -6,28 +6,50 @@
 /*   By: jbadia <jbadia@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 14:56:18 by jbadia            #+#    #+#             */
-/*   Updated: 2021/05/13 10:10:34 by jbadia           ###   ########.fr       */
+/*   Updated: 2021/05/14 16:04:22 by jbadia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <string.h>
+
+static size_t ft_strnlen(const char *str, size_t maxlen)
+{
+	size_t	len;
+
+	len = ft_strlen(str);
+	if (len < maxlen)
+		return (len);
+	else
+		return (maxlen);
+}
 
 size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 {
-	size_t	len_dest;
-	size_t	len_src;
-	size_t	i;
+	size_t	srclen;
+	size_t	dstlen;
 
-	len_dest = ft_strlen(dest);
-	len_src = ft_strlen(src);
-	i = 0;
-	if (dstsize < len_dest)
-		return (dstsize + len_src);
-	while ((len_dest + i < dstsize - 1) && (src[i] != 0))
+	srclen = ft_strlen(src);
+	dstlen = ft_strnlen(dest, dstsize);
+	if (dstlen == dstsize)
+		return (dstsize + srclen);
+	if (srclen < dstsize - dstlen)
+		ft_memcpy(dest + dstlen, src, srclen + 1);
+	else
 	{
-		dest[len_dest + i] = src[i];
-		i++;
+		ft_memcpy(dest + dstlen, src, dstsize - dstlen - 1);
+		dest[dstsize - 1] = '\0';
 	}
-	dest[len_dest + i] = '\0';
-	return (len_dest + len_src);
+	return (dstlen + srclen);
+
+}
+
+int main(void)
+{
+	  char dest[30] = "SALUTATIONS";
+	  char src[] = "toto";
+	  printf("C  : %zu\n\n", strlcat(dest, src, 23));
+	  printf("FT : %zu\n", ft_strlcat(dest, src, 23));
+	  
 }
