@@ -6,13 +6,11 @@
 /*   By: jbadia <jbadia@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 14:56:18 by jbadia            #+#    #+#             */
-/*   Updated: 2021/05/14 16:04:22 by jbadia           ###   ########.fr       */
+/*   Updated: 2021/05/14 16:08:19 by jbadia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
 static size_t ft_strnlen(const char *str, size_t maxlen)
 {
@@ -43,13 +41,4 @@ size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 	}
 	return (dstlen + srclen);
 
-}
-
-int main(void)
-{
-	  char dest[30] = "SALUTATIONS";
-	  char src[] = "toto";
-	  printf("C  : %zu\n\n", strlcat(dest, src, 23));
-	  printf("FT : %zu\n", ft_strlcat(dest, src, 23));
-	  
 }
