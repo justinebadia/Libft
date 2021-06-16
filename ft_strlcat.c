@@ -6,13 +6,13 @@
 /*   By: jbadia <jbadia@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 14:56:18 by jbadia            #+#    #+#             */
-/*   Updated: 2021/05/14 16:08:19 by jbadia           ###   ########.fr       */
+/*   Updated: 2021/05/17 09:02:30 by jbadia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t ft_strnlen(const char *str, size_t maxlen)
+static size_t	ft_strnlen(const char *str, size_t maxlen)
 {
 	size_t	len;
 
@@ -40,5 +40,4 @@ size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 		dest[dstsize - 1] = '\0';
 	}
 	return (dstlen + srclen);
-
 }

@@ -6,7 +6,7 @@
 /*   By: jbadia <jbadia@student.42quebec.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 16:17:36 by jbadia            #+#    #+#             */
-/*   Updated: 2021/05/14 13:39:10 by jbadia           ###   ########.fr       */
+/*   Updated: 2021/05/17 09:03:02 by jbadia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	itoa_length(int n)
 	return (len);
 }
 
-static char		*pre_itoa(char	*str, long nb, int len, int is_negative)
+static char	*pre_itoa(char	*str, long nb, int len, int is_negative)
 {
 	is_negative = 0;
 	str = (char *)malloc(sizeof(char) * (len + 1));
@@ -55,7 +55,7 @@ static char		*pre_itoa(char	*str, long nb, int len, int is_negative)
 	return (str);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	long	nb;
