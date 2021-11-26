@@ -3,54 +3,80 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jbadia <jbadia@student.42quebec.c>         +#+  +:+       +#+         #
+#    By: jbadia <jbadia@student.42quebec.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/05/10 15:51:50 by jbadia            #+#    #+#              #
-#    Updated: 2021/05/12 12:46:30 by jbadia           ###   ########.fr        #
+#    Created: 2021/11/25 11:08:17 by jbadia            #+#    #+#              #
+#    Updated: 2021/11/25 14:54:35 by jbadia           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS    = ft_atoi.c  ft_bzero.c ft_calloc.c  ft_isalnum.c $\
-		  ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c $\
-		  ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c $\
-		  ft_memset.c ft_putchar_fd.c  ft_putendl_fd.c $\
-		  ft_putstr_fd.c  ft_split.c ft_toupper.c ft_putnbr_fd.c $\
-		  ft_strchr.c  ft_strdup.c ft_strjoin.c $\
-		  ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c $\
-		  ft_strncmp.c  ft_strnstr.c ft_strrchr.c $\
-		  ft_strtrim.c ft_substr.c ft_tolower.c $\
 
-BONUS = ft_lstsize.c ft_lstadd_front.c ft_lstadd_back.c ft_lstlast.c  $\
-		ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_lstnew.c $\
+CBOLD   = \033[1m
+CITALIC = \033[3m
+CBLUE   = \033[34m
+CVIOLET = \033[35m
+NORMAL 	= \033[0m
+CBLUEBG   = \033[44m
+CVIOLETBG = \033[45m
+CWHITEBG  = \033[47m
+CGREEN2  = \033[92m
 
-OBJS    = ${SRCS:.c=.o}
+OBJ_DIR	= obj 
+SRC_DIR	= srcs
+HDR	= libft.h
+NAME = libft.a
+CC	= gcc 
+AR	= ar rcs
+CFLAGS	= -Wall -Wextra -Werror
+RM	= rm -rf
 
-BONUS_OBJS = ${BONUS:.c=.o}
+SRC_C	=	srcs/ft_char/ft_isalnum.c srcs/ft_char/ft_isalpha.c \
+			srcs/ft_char/ft_isascii.c srcs/ft_char/ft_isdigit.c \
+			srcs/ft_char/ft_isprint.c srcs/ft_char/ft_tolower.c \
+			srcs/ft_char/ft_toupper.c \
+			srcs/ft_conv/ft_atoi.c srcs/ft_conv/ft_itoa.c\
+			srcs/ft_list/ft_lstsize.c srcs/ft_list/ft_lstadd_front.c\
+			srcs/ft_list/ft_lstadd_back.c srcs/ft_list/ft_lstlast.c\
+			srcs/ft_list/ft_lstdelone.c srcs/ft_list/ft_lstclear.c\
+			srcs/ft_list/ft_lstiter.c srcs/ft_list/ft_lstmap.c\
+			srcs/ft_list/ft_lstnew.c\
+			srcs/ft_mem/ft_bzero.c srcs/ft_mem/ft_calloc.c\
+			srcs/ft_mem/ft_memccpy.c srcs/ft_mem/ft_memchr.c\
+			srcs/ft_mem/ft_memcmp.c srcs/ft_mem/ft_memcpy.c\
+			srcs/ft_mem/ft_memmove.c srcs/ft_mem/ft_memset.c\
+			srcs/ft_put/ft_putchar_fd.c  srcs/ft_put/ft_putendl_fd.c\
+			srcs/ft_put/ft_putnbr_fd.c srcs/ft_put/ft_putstr_fd.c\
+			srcs/ft_str/ft_split.c srcs/ft_str/ft_strchr.c\
+			srcs/ft_str/ft_strdup.c srcs/ft_str/ft_strjoin.c\
+			srcs/ft_str/ft_strlcat.c srcs/ft_str/ft_strlcpy.c\
+			srcs/ft_str/ft_strlen.c srcs/ft_str/ft_strmapi.c\
+			srcs/ft_str/ft_strncmp.c srcs/ft_str/ft_strnstr.c\
+			srcs/ft_str/ft_strrchr.c srcs/ft_str/ft_strtrim.c\
+			srcs/ft_str/ft_substr.c srcs/ft_str/ft_strcmp.c\
+			srcs/ft_str/ft_strcpy.c\
+			srcs/ft_free/ft_free.c srcs/ft_free/ft_free_arrstr.c
 
-NAME    = libft.a
+OBJS	=	$(SRC_C:.c=.o)
 
-CC      = gcc
+.c.o:
+	@${CC} ${CFLAGS} -c -I. $< -o $@
 
-CFLAGS  = -Wall -Wextra -Werror
+all	:		$(NAME)
+	@echo "$(CBLUE)──────▄▀▄─────▄▀▄$(NORMAL)"
+	@echo "$(CBLUE)─────▄█░░▀▀▀▀▀░░█▄$(NORMAL)			"
+	@echo "$(CBLUE)─▄▄──█░░░░░░░░░░░█──▄▄$(NORMAL)"
+	@echo "$(CBLUE)█▄▄█─█░░▀░░┬░░▀░░█─█▄▄█$(NORMAL) $(CBOLD)$(CITALIC)$(CVIOLET) LIBFT IS COMPILED $(NORMAL)"
 
-.o.c:
-			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
-
-all :       ${NAME}
-
-${NAME} :   ${OBJS}
-			ar rcs ${NAME} ${OBJS}
-
-bonus: ${OBJS} ${BONUS_OBJS}
-		ar rcs ${NAME} ${OBJS} ${BONUS_OBJS}
+$(NAME)	:	$(OBJS)
+	@$(AR) $(NAME) $(OBJS)
 
 clean :
-			rm -f ${OBJS} ${BONUS_OBJS}
+	@$(RM) $(OBJS)
+	@echo "$(CBOLD)$(CGREEN2) LIBFT IS CLEANED $(NORMAL)"
 
-fclean :    clean
-			rm -f ${NAME}
+fclean : clean
+	@$(RM) $(NAME)
 
-re :        fclean all
+re : fclean all
 
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

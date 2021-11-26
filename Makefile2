@@ -1,0 +1,60 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile2                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jbadia <jbadia@student.42quebec.com>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/11/24 12:13:44 by jbadia            #+#    #+#              #
+#    Updated: 2021/11/24 16:03:11 by jbadia           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = libft.a
+
+CC = gcc
+
+CFLAGS = -Wall -Wextra -Werror -g
+
+SRCS_DIR = srcs/
+OBJS_DIR = obj/
+
+SRCS_FILE = 
+		    
+		  f
+
+OBJS_FILE = ${SRCS_FILE:.c=.o}
+
+SRCS = $(addprefix $(SRCS_DIR)/, $(SRCS_FILE))
+OBJS = $(addprefix $(OBJS_DIR)/, $(OBJS_FILE))
+
+
+CBOLD   = \033[1m
+CITALIC = \033[3m
+CBLUE   = \033[34m
+CVIOLET = \033[35m
+NORMAL 	= \033[0m
+CBLUEBG   = \033[44m
+CVIOLETBG = \033[45m
+
+$(OBJ_DIR)/%.o: $(SRCS_DIR)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR) : 
+	mkdir -p $(OBJS_DIR)
+
+all : $(NAME)
+	@echo "$(CBOLD)$(CITALIC)$(CVIOLET) COMPILE $(NORMAL)"
+
+${NAME} :   ${OBJS}
+			ar rcs ${NAME} ${OBJS} -o $@
+clean :
+			rm -f ${OBJS}
+
+fclean :    clean
+			rm -f ${NAME}
+
+re :        fclean all
+
+
+.PHONY: all clean fclean re
